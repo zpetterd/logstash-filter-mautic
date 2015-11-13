@@ -1,5 +1,11 @@
+/.bundle/
+/.yardoc
+/Gemfile.lock
+/_yardoc/
+/coverage/
+/doc/
+/pkg/
+/spec/reports/
+/tmp/
+
 *.gem
-Gemfile.lock
-Gemfile.bak
-.bundle
-vendor
