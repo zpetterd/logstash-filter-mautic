@@ -299,5 +299,50 @@ RUBY_ENGINE == "jruby" and describe LogStash::Filters::Mautic do
       expect(subject['type']).to eq("lead")
       expect(subject['firstname']).to eq("test")
     end
+  end   
+
+
+    describe "Check changed points" do
+    let(:config) do <<-CONFIG
+      filter {
+        mautic {
+          source => "message"
+        }
+      }
+    CONFIG
+    end
+
+    entered_fields = '{
+  "mautic.lead_points_change": {
+    "lead": {
+      "id": 26,
+      "points": 10,
+      "color": null,
+      "fields": {},
+      "lastActive": "2015-08-26T01:30:35+00:00",
+      "owner": null,
+      "ipAddresses": {
+        "127.0.0.1": []
+      },
+      "dateIdentified": "2015-08-26T01:30:35+00:00",
+      "preferredProfileImage": null
+    },
+    "points": {
+      "old_points": 0,
+      "new_points": 10
+    }
+  },
+  "timestamp": "2015-11-13T15:38:10+11:00"
+}'
+    #it "should contain points"
+    sample entered_fields  do
+      #insist { subject["points"] } == 25
+      expect(subject).to include('leadid')
+      expect(subject).not_to include('fields')
+      expect(subject).to include('firstname')
+      expect(subject['leadid']).to eq(25)
+      expect(subject['type']).to eq("lead")
+      expect(subject['firstname']).to eq("test")
+    end
   end          
 end
