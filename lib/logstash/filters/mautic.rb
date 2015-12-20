@@ -235,7 +235,10 @@ class LogStash::Filters::Mautic < LogStash::Filters::Base
   def processNewUpdateLead(json_data,key)
     parsed_data = newLeadFilter(json_data)
     parsed_data['leadid'] = parsed_data['id'].to_i
+    parsed_data['emailAddress'] = parsed_data['email']
+
     parsed_data.delete('id')
+    parsed_data.delete('email')
 
     if parsed_data['dateIdentified'] != nil
       parsed_data['dateIdentified'] = LogStash::Timestamp.parse_iso8601(parsed_data['dateIdentified'])

@@ -55,6 +55,8 @@ RUBY_ENGINE == "jruby" and describe LogStash::Filters::Mautic do
       #insist { subject["points"] } == 25
       expect(subject).to include('leadid')
       expect(subject['leadid']).to eq(80)
+      expect(subject).not_to include('fields')
+
     end
   end  
 
@@ -81,6 +83,8 @@ RUBY_ENGINE == "jruby" and describe LogStash::Filters::Mautic do
       #insist { subject["points"] } == 25
       expect(subject).to include("firstname")
       expect(subject['firstname']).to eq("New")
+      expect(subject).not_to include('fields')
+
     end
   end
 
@@ -110,7 +114,7 @@ RUBY_ENGINE == "jruby" and describe LogStash::Filters::Mautic do
       expect(subject['mautic_tags'][0]).to eq("test")
       expect(subject['mautic_tags'][1]).to eq("test2")
       expect(subject).not_to include('fields')
-
+      expect(subject).not_to include('fields')
     end
   end
 
@@ -184,6 +188,8 @@ RUBY_ENGINE == "jruby" and describe LogStash::Filters::Mautic do
       expect(subject['ipAddresses'][0]).to eq("123.14.945.113")
       expect(subject['ipAddresses'][1]).to eq("89.14.945.55")
       expect(subject).not_to include('fields')
+      expect(subject).not_to include('fields')
+
 
     end
   end 
@@ -298,6 +304,8 @@ RUBY_ENGINE == "jruby" and describe LogStash::Filters::Mautic do
       expect(subject['leadid']).to eq(25)
       expect(subject['type']).to eq("lead")
       expect(subject['firstname']).to eq("test")
+      expect(subject).not_to include('fields')
+
     end
   end   
 

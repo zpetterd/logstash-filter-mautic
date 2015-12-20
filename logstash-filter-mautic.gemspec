@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name = 'logstash-filter-mautic'
-  s.version         = '0.1'
+  s.version         = '0.2'
   s.licenses = ['Apache License (2.0)']
   s.summary = "Receives Mautic webhook data to view in Elasticsearch"
   s.description = "This plugin lets you get the majority of you Mautic data into Elasticsearch for viewing using Kibana. Just setup a http input for logstash and a filter like so mautic { source => 'message'}. See the GitHub repository for more information"
