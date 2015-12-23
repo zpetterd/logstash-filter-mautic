@@ -258,6 +258,17 @@ class LogStash::Filters::Mautic < LogStash::Filters::Base
 
   def processEmail(json_data)
     parsed_data = json_data['stat']
+
+    if parsed_data.include?('lead') == nil
+      puts json_data.to_json
+      raise "Error no lead object " + json_data.to_json
+    end
+
+    if parsed_data['lead'].include?('id') == nil
+      puts json_data.to_json
+      raise "Error no lead id " + json_data.to_json
+    end
+
     parsed_data['leadid'] = parsed_data['lead']['id'].to_i
     parsed_data['emailopenid'] = parsed_data['id']
 

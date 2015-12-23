@@ -347,10 +347,8 @@ RUBY_ENGINE == "jruby" and describe LogStash::Filters::Mautic do
       #insist { subject["points"] } == 25
       expect(subject).to include('leadid')
       expect(subject).not_to include('fields')
-      expect(subject).to include('firstname')
-      expect(subject['leadid']).to eq(25)
+      expect(subject['leadid']).to eq(26)
       expect(subject['type']).to eq("lead")
-      expect(subject['firstname']).to eq("test")
     end
   end          
 end
